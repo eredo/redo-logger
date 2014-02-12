@@ -1,0 +1,30 @@
+{
+  "name": "redo-logger",
+  "version": "0.1.0",
+  "description": "A node.js logger which handles all levels on a global node.js runtime level. It also support hierarchy based level setup using namespace paths.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "benchmark": "~1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eredo/redo-logger.git"
+  },
+  "keywords": [
+    "logger",
+    "level",
+    "logrecords"
+  ],
+  "author": "Eric Schneller <eric@schnellers.name>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eredo/redo-logger/issues"
+  }
+}
