@@ -47,7 +47,11 @@ describe('redo.Logger.Level', function() {
 
   describe('function override', function() {
     var log = Logger.getLogger('logger');
-    log.setLevel(Logger.Level.FATAL | Logger.Level.WARN);
+
+    before(function(done) {
+      log.setLevel(Logger.Level.FATAL | Logger.Level.WARN);
+      done();
+    });
 
     it('should override the "fine" function', function() {
       expect(log.fine).to.be.equal(Logger.cleanFunction);
@@ -56,6 +60,19 @@ describe('redo.Logger.Level', function() {
     it('should not override "warn" and "fatal"', function() {
       expect(log.fatal).to.not.equal(Logger.cleanFunction);
       expect(log.warn).to.not.equal(Logger.cleanFunction);
+    });
+  });
+
+  describe('Logger.configure', function() {
+    it('should have level "FINER"', function() {
+      var logger = new Logger('test.Class');
+      logger.setLevel(Logger.Level.FINER);
+      Logger.configure({
+        globalLevel: 'OFF',
+        levels: {}
+      });
+
+      expect(logger.getLevel()).to.be.equal(Logger.Level.FINER);
     });
   });
 });
