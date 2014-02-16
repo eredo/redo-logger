@@ -1,22 +1,22 @@
 {
   "name": "redo-logger",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A node.js logger which handles all levels on a global node.js runtime level. It also support hierarchy based level setup using namespace paths.",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "benchmark": "~1.0.0"
   },
   "devDependencies": {
+    "benchmark": "~1.0.0",
     "grunt": "~0.4.2",
     "grunt-mocha-test": "~0.9.0",
     "grunt-contrib-jshint": "~0.8.0",
     "chai": "~1.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/grunt-mocha-test/node_modules/.bin/mocha -R spec test/"
   },
   "repository": {
     "type": "git",
