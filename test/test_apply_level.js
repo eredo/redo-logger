@@ -65,7 +65,7 @@ describe('redo.Logger.Level', function() {
 
   describe('Logger.configure', function() {
     it('should have level "FINER"', function() {
-      var logger = new Logger('test.Class');
+      var logger = Logger.getLogger('test.Class');
       logger.setLevel(Logger.Level.FINER);
       Logger.configure({
         globalLevel: 'OFF',
@@ -73,6 +73,18 @@ describe('redo.Logger.Level', function() {
       });
 
       expect(logger.getLevel()).to.be.equal(Logger.Level.FINER);
+    });
+
+    it('should get the new level "FINE"', function() {
+      Logger.setGlobalLevel(Logger.Level.OFF);
+      var logger = Logger.getLogger('of.class');
+      Logger.configure({
+        globalLevel: Logger.Level.OFF,
+        levels: {
+          'of.class': 'FINE'
+        }
+      });
+      expect(logger.getLevel()).to.be.equal(Logger.Level.FINE);
     });
   });
 });
