@@ -55,14 +55,14 @@ levelStyles[Logger.Level.FATAL] = styles.magenta;
  */
 module.exports.console = function(opt_options) {
   var defaultOptions = {
-    dateFormat: 'yyyy-mm-dd h:MM:ss',
+    dateFormat: 'yyyy-mm-dd hh:MM:ss.l',
     location: true,
     colors: false
   };
 
   var levelStr = {};
   for (var level in Logger.Level) {
-    levelStr[Logger.Level[level]] = level;
+    levelStr[Logger.Level[level]] = level + (level.length < 5 ? ' ' : '');
   }
 
   opt_options = opt_options || {};
@@ -78,7 +78,11 @@ module.exports.console = function(opt_options) {
    */
   function run(record) {
     var now = new Date(), dateStr = dateformat(now, opt_options.dateFormat);
-    var msg = ['[' + levelStr[record.level] + '] ' + record.logger.name + ' ' + dateStr];
+    var msg = [
+        '[' + dateStr + ']',
+        '[' + levelStr[record.level] + ']',
+        record.logger.name + '\t\t'
+    ];
 
     if (opt_options.location) {
       var actualLocation = path.relative(process.cwd(), record.location.file);
