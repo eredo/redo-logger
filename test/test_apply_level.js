@@ -81,7 +81,7 @@ describe('redo.Logger.Level', function() {
       Logger.configure({
         globalLevel: Logger.Level.OFF,
         levels: {
-          'of.class': 'FINE'
+          'of': 'FINE'
         }
       });
       expect(logger.getLevel()).to.be.equal(Logger.Level.FINE);

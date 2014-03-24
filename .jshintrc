@@ -1,0 +1,16 @@
+{
+  "node": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "undef": true,
+  "expr": true,
+  "strict": true,
+  "forin": false,
+  "loopfunc": true,
+  "bitwise": false,
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true
+  }
+}
