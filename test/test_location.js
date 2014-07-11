@@ -20,3 +20,23 @@ describe('logger stack location', function() {
     expect(loc).to.deep.equal({row: 18, col: 12, file: __dirname + '/test_location.js'});
   });
 });
+
+describe('disable location', function() {
+  var loc, logger = Logger.getLogger('test');
+
+  before(function() {
+    Logger.setGlobalLevel(Logger.Level.FINE, true);
+    Logger.recordHandler.push(function(record) {
+      loc = record.location;
+    });
+
+    Logger.configure({
+      location: true
+    });
+  });
+
+  it('should be undefined', function() {
+    logger.fine('test blub');
+    expect(loc).to.be.equal(undefined);
+  });
+});
